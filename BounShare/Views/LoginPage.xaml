@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BounShare.Views.LoginPage"
+             Title="BounShare Giriş"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
+            
+            <Image Source="dotnet_bot.png" 
+                   HeightRequest="120" 
+                   HorizontalOptions="Center" />
+            
+            <Label Text="BounShare" 
+                   FontSize="32" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#003566"/>
+            
+            <Label Text="Üniversite içi paylaşım ağına hoş geldin!" 
+                   HorizontalOptions="Center" 
+                   TextColor="Gray" />
+
+            <VerticalStackLayout Spacing="15">
+                <Entry Placeholder="Boun E-posta (isim.soyisim@boun.edu.tr)" 
+                       Keyboard="Email" 
+                       TextColor="Black"
+                       PlaceholderColor="Silver"/>
+                
+                <Entry Placeholder="Şifre" 
+                       IsPassword="True" 
+                       TextColor="Black"
+                       PlaceholderColor="Silver"/>
+            </VerticalStackLayout>
+
+            <Button Text="Giriş Yap" 
+                    BackgroundColor="#003566" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    CornerRadius="10" 
+                    HeightRequest="50"/>
+            
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Label Text="Hesabın yok mu?" VerticalOptions="Center" />
+                <Button Text="Kayıt Ol" 
+                        BackgroundColor="Transparent" 
+                        TextColor="#003566" 
+                        FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

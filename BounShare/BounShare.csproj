@@ -64,4 +64,23 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\" />
+      <Folder Include="Services\" />
+      <Folder Include="ViewModels\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiXaml Update="Views\LoginPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\LoginPage.xaml.cs">
+        <DependentUpon>LoginPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>
