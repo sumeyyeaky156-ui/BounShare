@@ -35,6 +35,7 @@
             </VerticalStackLayout>
 
             <Button Text="Giriş Yap" 
+                    Clicked="OnLoginClicked"
                     BackgroundColor="#003566" 
                     TextColor="White" 
                     FontAttributes="Bold"

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BounShare.Views.ItemsPage"
+             Title="BounShare Eşya Listesi"
+             BackgroundColor="#F0F2F5">
+
+    <Grid RowDefinitions="Auto,*">
+        <VerticalStackLayout Grid.Row="0" Padding="20" BackgroundColor="#003566">
+            <Label Text="Kampüs Paylaşım" 
+                   TextColor="White" 
+                   FontSize="24" 
+                   FontAttributes="Bold" />
+            <Label Text="Öğrenci ve mensuplardan kiralık eşyalar" 
+                   TextColor="#ADD8E6" 
+                   FontSize="14" />
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" 
+                        x:Name="ItemsCollectionView" 
+                        Margin="10"
+                        SelectionMode="Single"
+                        SelectionChanged="OnItemSelected">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame HasShadow="True" 
+                           Padding="0" 
+                           CornerRadius="12" 
+                           BorderColor="Transparent"
+                           BackgroundColor="White"
+                           Margin="5,0">
+                        <HorizontalStackLayout Spacing="0">
+                            <Image Source="{Binding ImageUrl}" 
+                                   WidthRequest="120" 
+                                   HeightRequest="120" 
+                                   Aspect="AspectFill" />
+                            
+                            <VerticalStackLayout Padding="15" Spacing="5" VerticalOptions="Center">
+                                <Label Text="{Binding Name}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#333" />
+                                
+                                <Label Text="{Binding Category}" 
+                                       FontSize="14" 
+                                       TextColor="#003566" />
+                                
+                                <Label Text="{Binding Price, StringFormat='Günlük: {0} TL'}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold"
+                                       TextColor="#28a745" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
