@@ -22,7 +22,6 @@ public partial class ItemsPage : ContentPage
         {
             using (var db = new AppDbContext())
             {
-                // Veritabanının var olduğundan emin oluyoruz
                 db.Database.EnsureCreated();
                 
                 var products = db.Items.ToList();
@@ -40,14 +39,11 @@ public partial class ItemsPage : ContentPage
         }
     }
 
-    // YENİ: Mesajlar butonuna tıklandığında çalışacak metod
     private async void OnMessagesClicked(object sender, EventArgs e)
     {
-        // Mesajlar sayfasını (4. sayfa) açar
         await Navigation.PushAsync(new MessagesPage());
     }
 
-    // Profil butonuna tıklandığında çalışacak metod
     private async void OnProfileClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new AboutPage());
