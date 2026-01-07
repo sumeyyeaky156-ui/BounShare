@@ -6,4 +6,11 @@ public partial class ItemDetailPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private void OnRentClicked(object sender, EventArgs e)
+    {
+        RentButton.IsVisible = false;
+        
+        StatusLabel.IsVisible = true;
+    }
 }

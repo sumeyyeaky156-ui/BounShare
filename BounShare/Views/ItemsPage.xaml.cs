@@ -8,33 +8,51 @@ public partial class ItemsPage : ContentPage
     public ItemsPage()
     {
         InitializeComponent();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
         LoadItemsFromDatabase();
     }
 
     private void LoadItemsFromDatabase()
     {
-        using (var db = new AppDbContext())
+        try 
         {
-            db.Database.EnsureCreated();
-            var products = db.Items.ToList();
-            if (products != null)
-                ItemsCollectionView.ItemsSource = products;
+            using (var db = new AppDbContext())
+            {
+                db.Database.EnsureDeleted(); 
+                db.Database.EnsureCreated();
+                
+                var products = db.Items.ToList();
+                
+                if (products != null && products.Count > 0)
+                {
+                    ItemsCollectionView.ItemsSource = null;
+                    ItemsCollectionView.ItemsSource = products;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Title = "Hata: " + ex.Message;
         }
     }
 
-    // HATA BURADAYDI: Parametrelerin tam olarak bu şekilde olması lazım
     private async void OnItemSelected(object sender, SelectionChangedEventArgs e)
     {
-        var selectedItem = e.CurrentSelection.FirstOrDefault() as Item;
-        
-        if (selectedItem != null)
+        if (e.CurrentSelection.FirstOrDefault() is Item selectedItem)
         {
-            // Detay sayfasına git
-            await Navigation.PushAsync(new ItemDetailPage { BindingContext = selectedItem });
+            await Navigation.PushAsync(new ItemDetailPage 
+            { 
+                BindingContext = selectedItem 
+            });
         }
 
-        // Seçimi temizle
         if (sender is CollectionView collectionView)
+        {
             collectionView.SelectedItem = null;
+        }
     }
 }
