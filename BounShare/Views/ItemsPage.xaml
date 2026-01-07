@@ -2,19 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BounShare.Views.ItemsPage"
-             Title="BounShare Eşya Listesi"
+             Title="BounShare"
              BackgroundColor="#F0F2F5">
 
     <Grid RowDefinitions="Auto,*">
-        <VerticalStackLayout Grid.Row="0" Padding="20" BackgroundColor="#003566">
-            <Label Text="Kampüs Paylaşım" 
-                   TextColor="White" 
-                   FontSize="24" 
-                   FontAttributes="Bold" />
-            <Label Text="Öğrenci ve mensuplardan kiralık eşyalar" 
-                   TextColor="#ADD8E6" 
-                   FontSize="14" />
-        </VerticalStackLayout>
+        <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Padding="20" BackgroundColor="#003566">
+            
+            <VerticalStackLayout Grid.Column="0" Spacing="2">
+                <Label Text="Kampüs Paylaşım" 
+                       TextColor="White" 
+                       FontSize="24" 
+                       FontAttributes="Bold" />
+                <Label Text="Öğrenci ve mensuplardan kiralık" 
+                       TextColor="#ADD8E6" 
+                       FontSize="13" />
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout Grid.Column="1" Spacing="10" VerticalOptions="Center">
+                
+                <Button Text="MESAJLAR"
+                        FontSize="11"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#00509d"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        Padding="10,0"
+                        Clicked="OnMessagesClicked" />
+
+                <Button Text="PROFİL"
+                        FontSize="11"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        BackgroundColor="#00509d"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="70"
+                        Clicked="OnProfileClicked" />
+                
+            </HorizontalStackLayout>
+        </Grid>
 
         <CollectionView Grid.Row="1" 
                         x:Name="ItemsCollectionView" 
